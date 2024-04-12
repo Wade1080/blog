@@ -19,5 +19,10 @@ import Navigation from './components/Navigation.astro';
 
 		<h1>Astro</h1>
 		<Footers />
+		<script>
+			document.querySelector('.hamburger').addEventListener('click', () => {
+			  document.querySelector('.nav-links').classList.toggle('expanded');
+			});
+		  </script>
 	</body>
 </html>
