@@ -1,79 +1,67 @@
 ---
-import '../styles/global.css'
-import Footers from './components/Footers.astro';
-import Header from './components/Header.astro';
-import Navigation from './components/Navigation.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "关于我";
 
-const {firstName,country,occupation,hobbies} = {
+const { firstName, country, occupation, hobbies } = {
     firstName: "Wade",
     country: "China",
     occupation: "coder",
-    hobbies: ["sing","dance","rap"]
-}
+    hobbies: ["sing", "dance", "rap"],
+};
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
-const happy = true
-const finished = false
+const happy = true;
+const finished = false;
 const goal = 3;
 
-const skillColor ="navy"
-const fontWeight ="bold"
-const textCase ="uppercase"
-
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-        <style define:vars={{skillColor,fontWeight,textCase}}>
-            h1{
-                color: purple;
-                font-size: 4rem;
-            }
+<BaseLayout pageTitle="关于">
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
 
-            .skill{
-                /* color: green; */
-                color: var(--skillColor);
-                font-weight: var(--fontWeight);
-                text-transform: var(--textCase);
-            }
-        </style>
-    </head>
-    <body>
-		<Header />
+        .skill {
+            /* color: green; */
+            color: var(--skillColor);
+            font-weight: var(--fontWeight);
+            text-transform: var(--textCase);
+        }
+    </style>
 
+    <h1>{pageTitle}</h1>
+    <h2>……和我的新 Astro 网站！</h2>
 
-        <h1>{pageTitle}</h1>
-        <h2>……和我的新 Astro 网站！</h2>
+    <p>
+        我正在学习 Astro
+        的入门教程。这是我网站上的第二个页面，也是我自己建立的第一页面！
+    </p>
 
-        <p>我正在学习 Astro 的入门教程。这是我网站上的第二个页面，也是我自己建立的第一页面！</p>
-    
-        <p>随着我完成更多教程，该站点将更新，所以请继续查看我的旅程将如何进行吧！</p>
-        <p>以下是关于我的几个事实：</p>
-        <ul>
-            <li>我的名字是{firstName}</li>
-            <li>我住在{country}.我的职业是{occupation}</li>
-            {hobbies.length>=2 &&
-            <li>我的两个习惯:{hobbies[0]}和{hobbies[1]}</li>}
-        </ul>
-        <p>我的技能是:</p>
-        <ul>
-            {skills.map((skill)=>(
-                <li class="skill">{skill}</li>
-            ))}
-        </ul>
-        {happy && <p>我非常乐意学习 Astro !</p>}
-        {finished && <p>我完成了这篇 blog !</p>}
-        {goal === 3?<p>我的目标是三天内完成</p>:<p>我的目标不足三天</p>}
-
-        <Footers />
-        <script>
-            import './scripts/menu.js'
-        </script>
-    </body>
-</html>
+    <p>
+        随着我完成更多教程，该站点将更新，所以请继续查看我的旅程将如何进行吧！
+    </p>
+    <p>以下是关于我的几个事实：</p>
+    <ul>
+        <li>我的名字是{firstName}</li>
+        <li>我住在{country}.我的职业是{occupation}</li>
+        {
+            hobbies.length >= 2 && (
+                <li>
+                    我的两个习惯:{hobbies[0]}和{hobbies[1]}
+                </li>
+            )
+        }
+    </ul>
+    <p>我的技能是:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <p>我非常乐意学习 Astro !</p>}
+    {finished && <p>我完成了这篇 blog !</p>}
+    {goal === 3 ? <p>我的目标是三天内完成</p> : <p>我的目标不足三天</p>}
+</BaseLayout>
