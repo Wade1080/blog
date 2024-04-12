@@ -9,6 +9,10 @@ const {firstName,country,occupation,hobbies} = {
 }
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
+const happy = true
+const finished = false
+const goal = 3;
+
 ---
 
 <html lang="en">
@@ -43,6 +47,9 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
                 <li>{skill}</li>
             ))}
         </ul>
+        {happy && <p>我非常乐意学习 Astro !</p>}
+        {finished && <p>我完成了这篇 blog !</p>}
+        {goal === 3?<p>我的目标是三天内完成</p>:<p>我的目标不足三天</p>}
 
     </body>
 </html>
